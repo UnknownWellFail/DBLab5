@@ -13,16 +13,17 @@ public class Orders implements Serializable {
 
     private Date date;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "client_id")
+
     private Client orderClient;
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "developer_id")
     private Developer developer;
 
-    @OneToOne(cascade = CascadeType.ALL)
-     @JoinColumn(name = "order_id")
+    @ManyToOne
+    @JoinColumn(name = "order_id")
      private Order order;
 
     public Orders() {

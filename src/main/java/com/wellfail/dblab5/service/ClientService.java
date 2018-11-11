@@ -1,13 +1,10 @@
 package com.wellfail.dblab5.service;
 
 import com.wellfail.dblab5.entity.Client;
-import com.wellfail.dblab5.entity.Developer;
-import com.wellfail.dblab5.entity.Profile;
 import com.wellfail.dblab5.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -38,5 +35,9 @@ public class ClientService {
 
     public void removeProfile(Client client) {
         clientRepository.delete(client);
+    }
+
+    public Client getClientByEmail(String email) {
+        return clientRepository.findByEmail(email);
     }
 }

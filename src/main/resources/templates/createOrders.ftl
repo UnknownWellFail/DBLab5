@@ -1,4 +1,4 @@
-<#import "../parts/common.ftl"as c>
+<#import "parts/common.ftl"as c>
 <@c.page>
 
 
@@ -6,11 +6,8 @@
         <thead class="thead-dark">
         <tr>
             <th scope="col">id</th>
-            <th scope="col">Date</th>
-            <th scope="col">Client name</th>
-            <th scope="col">Developer name</th>
-            <th scope="col">Order name</th>
-
+            <th scope="col">Name</th>
+            <th scope="col">Description</th>
             <th></th>
         </tr>
         </thead>
@@ -18,12 +15,9 @@
             <#list orders as order>
             <tr>
                 <th scope="row">${order.id}</th>
-                <td>${order.date}</td>
-                <td>${order.orderClient.name}</td>
-                <td>${order.developer.name}</td>
-                <td>${order.order.name}</td>
-
-                <td><a class="btn btn-primary" href="/orders/remove/${order.id}" role="button">Remove</a></td>
+                <td>${order.name}</td>
+                <td>${order.description}</td>
+                <td><a class="btn btn-primary" href="/createOrder/remove/${order.id}" role="button">Remove</a></td>
             </tr>
             </#list>
         </tbody>
@@ -37,7 +31,7 @@
 </a>
 <div class="collapse <#if order??>show</#if>" id="collapseExample">
     <div class="form-group mt-3">
-        <form method="post" >
+        <form method="post">
             <div class="form-group">
                 <input type="text" class="form-control ${(nameError??)?string('is-invalid', '')}"
                        value="<#if order??>${order.name}</#if>" name="name" placeholder="Введите название"/>

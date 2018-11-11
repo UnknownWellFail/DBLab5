@@ -2,6 +2,7 @@ package com.wellfail.dblab5.entity;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 public class Client implements Serializable {
@@ -23,8 +24,8 @@ public class Client implements Serializable {
     @Column(name = "phone")
     private String phoneNumber;
 
-    @OneToOne(mappedBy = "orderClient")
-    private Orders orders;
+    @OneToMany(mappedBy = "orderClient", cascade = CascadeType.ALL)
+    private Set<Orders> orders;
 
     public Client() {
     }
@@ -85,11 +86,11 @@ public class Client implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public Orders getOrders() {
+    public Set<Orders> getOrders() {
         return orders;
     }
 
-    public void setOrders(Orders order) {
+    public void setOrders(Set<Orders> orders) {
         this.orders = orders;
     }
 }

@@ -34,8 +34,8 @@ public class Developer implements Serializable {
     private String phoneNumber;
 
 
-    @OneToOne(mappedBy = "developer")
-    private Orders orders;
+    @OneToMany(mappedBy = "developer", cascade = CascadeType.ALL)
+    private Set<Orders> orders;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "profiles",
@@ -112,11 +112,11 @@ public class Developer implements Serializable {
         this.profiles = profiles;
     }
 
-    public Orders getOrders() {
+    public Set<Orders> getOrders() {
         return orders;
     }
 
-    public void setOrders(Orders orders) {
+    public void setOrders(Set<Orders> orders) {
         this.orders = orders;
     }
 }
