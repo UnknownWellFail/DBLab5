@@ -24,6 +24,7 @@
                 <td>${client.middleName}</td>
                 <td>${client.phoneNumber}</td>
                 <td>${client.email}</td>
+                <td><a class="btn btn-primary" href="/clients/remove/${client.id}" role="button">Remove</a></td>
             </tr>
 
             </#list>
@@ -40,20 +41,51 @@
     <div class="form-group mt-3">
         <form method="post" >
             <div class="form-group">
-                <input type="text" class="form-control ${(textError??)?string('is-invalid', '')}"
-                       value="<#if client??>${client.text}</#if>" name="text" placeholder="Введите сообщение"/>
-                <#if textError??>
+                <input type="text" class="form-control ${(nameError??)?string('is-invalid', '')}"
+                       value="<#if client??>${client.name}</#if>" name="name" placeholder="Введите имя"/>
+                <#if nameError??>
                 <div class="invalid-feedback">
-                    ${textError}
+                    ${nameError}
                 </div>
                 </#if>
             </div>
             <div class="form-group">
-                <input type="text" class="form-control ${(tagError??)?string('is-invalid', '')}"
-                       value="<#if message??>${message.tag}</#if>" name="tag" placeholder="Тэг">
-                <#if tagError??>
+                <input type="text" class="form-control ${(lastNameError??)?string('is-invalid', '')}"
+                       value="<#if client??>${client.lastName}</#if>" name="lastName" placeholder="Фамилия">
+                <#if lastNameError??>
                     <div class="invalid-feedback">
-                        ${tagError}
+                        ${lastNameError}
+                    </div>
+                </#if>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control ${(middleNameError??)?string('is-invalid', '')}"
+                       value="<#if client??>${client.middleName}</#if>" name="middleName" placeholder="Отчество">
+                <#if middleNameError??>
+                    <div class="invalid-feedback">
+                        ${middleNameError}
+                    </div>
+                </#if>
+            </div>
+
+
+            <div class="form-group">
+                <input type="text" class="form-control ${(phoneNumberError??)?string('is-invalid', '')}"
+                       value="<#if client??>${client.phoneNumber}</#if>" name="phoneNumber" placeholder="Номер телефона">
+                <#if phoneNumberError??>
+                    <div class="invalid-feedback">
+                        ${phoneNumberError}
+                    </div>
+                </#if>
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control ${(emailError??)?string('is-invalid', '')}"
+                       value="<#if client??>${client.email}</#if>" name="email" placeholder="E-mail">
+                <#if emailError??>
+                    <div class="invalid-feedback">
+                        ${emailError}
                     </div>
                 </#if>
             </div>

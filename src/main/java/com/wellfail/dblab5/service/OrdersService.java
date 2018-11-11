@@ -18,4 +18,8 @@ public class OrdersService {
     public List<Orders> findAll() {
         return (List<Orders>) ordersRepository.findAll();
     }
+
+    public void removeOrders(Orders orders) {
+        ordersRepository.delete(orders);
+    }
 }

@@ -18,4 +18,11 @@ public class ProfileService {
         return (List<Profile>) profileRepository.findAll();
     }
 
+    public void addProfile(Profile profile){
+        profileRepository.save(profile);
+    }
+
+    public void removeProfile(Profile profile){
+        profileRepository.delete(profile);
+    }
 }

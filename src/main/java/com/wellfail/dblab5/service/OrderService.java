@@ -17,4 +17,12 @@ public class OrderService {
     public List<Order> findAll() {
         return (List<Order>) orderRepository.findAll();
     }
+
+    public void addOrder(Order order, Object o) {
+        orderRepository.save(order);
+    }
+
+    public void removeOrder(Order order) {
+        orderRepository.delete(order);
+    }
 }

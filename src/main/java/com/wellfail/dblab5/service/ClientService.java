@@ -36,4 +36,7 @@ public class ClientService {
         clientRepository.save(client);
     }
 
+    public void removeProfile(Client client) {
+        clientRepository.delete(client);
+    }
 }

@@ -24,7 +24,7 @@ public class Client implements Serializable {
     private String phoneNumber;
 
     @OneToOne(mappedBy = "orderClient")
-    private Order order;
+    private Orders orders;
 
     public Client() {
     }
@@ -85,11 +85,11 @@ public class Client implements Serializable {
         this.phoneNumber = phoneNumber;
     }
 
-    public Order getOrder() {
-        return order;
+    public Orders getOrders() {
+        return orders;
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
+    public void setOrders(Orders order) {
+        this.orders = orders;
     }
 }

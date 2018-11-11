@@ -14,18 +14,29 @@
                 <a class="nav-link" href="/">Home </a>
             </li>
 
-<#--            <li class="nav-item">
-                <a class="nav-link" href="/index">Messages</a>
-            </li>
+        <#--            <li class="nav-item">
+                        <a class="nav-link" href="/index">Messages</a>
+                    </li>
 
-            <li class="nav-item">
-                <a class="nav-link" href="/user-messages/${currentUserId}">My Messages</a>
-            </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="/user-messages/${currentUserId}">My Messages</a>
+                    </li>-->
 
             <#if isAdmin>
             <li class="nav-item">
                 <a class="nav-link" href="/user">User list</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/developers">Developer list</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/clients">Client list</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/profiles">Profiles list</a>
+            </li>
+
+
             </#if>
 
              <#if user??>

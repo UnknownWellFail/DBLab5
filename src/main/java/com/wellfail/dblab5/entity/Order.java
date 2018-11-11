@@ -16,9 +16,9 @@ public class Order implements Serializable {
 
     private String description;
 
+    @OneToOne(mappedBy = "order")
+    private Orders orders;
 
-/*    @Column(columnDefinition = "TINYINT(1)")
-    private Boolean status;*/
 
     public Order() {
     }
@@ -53,13 +53,5 @@ public class Order implements Serializable {
         this.description = description;
     }
 
-/*
-    public boolean isStatus() {
-        return status;
-    }
 
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-*/
 }

@@ -1,9 +1,7 @@
 package com.wellfail.dblab5.controller;
 
-import com.wellfail.dblab5.entity.Client;
-import com.wellfail.dblab5.entity.Developer;
-import com.wellfail.dblab5.entity.Profile;
-import com.wellfail.dblab5.service.ClientService;
+import com.wellfail.dblab5.entity.Order;
+import com.wellfail.dblab5.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -14,24 +12,23 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.Map;
 
-@RequestMapping("/clients")
+@RequestMapping("/orders")
 @Controller
-public class ClientsController {
-
+public class OrderController {
 
     @Autowired
-    private ClientService clientService;
+    private OrderService orderService;
 
     @PreAuthorize("hasAuthority('ADMIN')")
     @GetMapping
-    public String getClients(Model model){
-        model.addAttribute("clients", clientService.findAll());
-        return "pages/clients";
+    public String getOrders(Model model) {
+        model.addAttribute("orders", orderService.findAll());
+        return "pages/orders";
     }
 
     @PostMapping
     public String add(
-            @Valid @ModelAttribute("Client") Client client,
+            @Valid @ModelAttribute("Order") Order order,
             BindingResult bindingResult,
             Model model
     ) throws Exception {
@@ -41,23 +38,23 @@ public class ClientsController {
 
 
             model.mergeAttributes(errorMap);
-            model.addAttribute("client", client);
+            model.addAttribute("order", order);
         } else {
 
-            model.addAttribute("client", null);
-            clientService.saveClient(client,null);
+            model.addAttribute("order", null);
+            orderService.addOrder(order, null);
         }
-        Iterable<Client> messages = clientService.findAll();
-        model.addAttribute("clients", messages);
-        return "pages/clients";
-    }
-    @PreAuthorize("hasAuthority('ADMIN')")
-    @GetMapping("remove/{client}")
-    public String removeDeveloper(
-            @PathVariable Client client
-    ) {
-        clientService.removeProfile(client);
-        return "redirect:/clients";
+        Iterable<Order> messages = orderService.findAll();
+        model.addAttribute("orders", messages);
+        return "pages/orders";
     }
 
+    @PreAuthorize("hasAuthority('ADMIN')")
+    @GetMapping("remove/{order}")
+    public String removeDeveloper(
+            @PathVariable Order order
+    ) {
+        orderService.removeOrder(order);
+        return "redirect:/orders";
+    }
 }
